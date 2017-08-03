@@ -1,7 +1,11 @@
 package com.rngrp;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.database.Cursor;
 
@@ -43,7 +47,7 @@ public class GRP extends ReactContextBaseJavaModule {
       String path = cursor.getString(column_index); 
       cursor.close();
         */
-      callback.invoke(null, getPath(context, uri));
+      callback.invoke(null, getPath(context, Uri.parse(uri)));
     } catch (Exception ex) {
       ex.printStackTrace();
       callback.invoke(makeErrorPayload(ex));
